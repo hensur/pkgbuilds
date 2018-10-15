@@ -1,0 +1,18 @@
+pkgbase = homegear-nodes-core
+	pkgdesc = Homegear core nodes for Node-BLUE
+	pkgver = 0.7.27
+	pkgrel = 1
+	url = https://homegear.eu
+	arch = x86_64
+	arch = i686
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	depends = libhomegear-base=0.7.27
+	depends = libhomegear-node=0.7.27
+	source = https://github.com/Homegear/homegear-nodes-core/archive/0.7.27.tar.gz
+	sha512sums = 7eaadcd3bde83856b8453819b31dc7eac0119832e74daf1e886c46410828cd30f3f005ec33ba02474f2cdd7ced5787dfde7f543449e384b750a33dafa5a1e29c
+
+pkgname = homegear-nodes-core
+

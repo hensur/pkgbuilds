@@ -1,0 +1,17 @@
+pkgbase = libhomegear-base
+	pkgdesc = Homegear base library
+	pkgver = 0.7.27
+	pkgrel = 1
+	url = https://homegear.eu
+	arch = x86_64
+	arch = i686
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = LGPL3
+	depends = gcc-libs
+	source = https://github.com/Homegear/libhomegear-base/archive/0.7.27.tar.gz
+	sha512sums = 3a98ff029ad805d9dd16aafe87d5ed16109c171d0ca943781831ee1cc0cf7ed1d198263a39b04067fe4195eab59552031145865252d02bfc37bb80197673b257
+
+pkgname = libhomegear-base
+

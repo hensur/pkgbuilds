@@ -1,0 +1,21 @@
+pkgbase = homegear-max
+	pkgdesc = eQ-3 MAX! module for Homegear
+	pkgver = 0.7.18
+	pkgrel = 1
+	url = https://homegear.eu
+	install = homegear-max.install
+	arch = x86_64
+	arch = i686
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	depends = homegear=0.7.18
+	backup = etc/homegear/families/max.conf
+	source = https://github.com/Homegear/Homegear-MAX/archive/0.7.18.tar.gz
+	sha512sums = 75d18c4efb6d54f7dec17c71749b5495c24ff467ec307708521a8d74aad6e7b107f72dbfc6b2b1e44005374b15156d7f0a0122e73830199e1e2637ac94395308
+
+pkgname = homegear-max
+	backup = etc/homegear/families/max.conf
+	backup = etc/homegear/devices/4/
+
