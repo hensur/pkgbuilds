@@ -1,0 +1,45 @@
+# Maintainer: Niklas <dev@n1klas.net>
+# Contributor: Sven Klomp <mail at klomp dot eu>
+# Contributor: Pierre Schmitz <pierre@archlinux.de>
+
+pkgname=php-homegear
+pkgver=8.0.1
+_pkgbase=php
+pkgrel=1
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+pkgdesc="Patched version of PHP for Homegear"
+license=('PHP')
+url="http://www.php.net"
+depends=('gmp' 'enchant' 'libedit' 'libmcrypt' 'libzip' 'libxml2' 'openssl' 'oniguruma')
+source=("http://www.php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"
+        "git://github.com/krakjoe/parallel.git#branch=develop")
+sha256sums=('SKIP'
+            'SKIP')
+options=(!emptydirs)
+
+prepare() {
+    cd "${srcdir}/${_pkgbase}-${pkgver}"
+
+    rm -rf "ext/parallel" || true
+    mv -f "${srcdir}/parallel" ext/
+
+    autoconf
+}
+
+build() {
+    cd "${srcdir}/${_pkgbase}-${pkgver}"
+
+    ./configure  --prefix /usr/share/homegear/php --enable-embed=static --with-config-file-path=/etc/homegear --with-config-file-scan-dir=/etc/homegear/php.conf.d --includedir=/usr/include/php8-homegear --libdir=/usr/share/homegear/php --libexecdir=${prefix}/lib --datadir=${prefix}/share --program-suffix=-homegear --sysconfdir=/etc/homegear --localstatedir=/var --mandir=${prefix}/man --disable-debug --disable-rpath --with-pic --with-layout=GNU --enable-bcmath --enable-calendar --enable-ctype --enable-dba --without-gdbm --without-qdbm --enable-inifile --enable-flatfile --enable-dom --with-enchant=/usr --enable-exif --with-gettext=/usr --with-gmp --enable-fileinfo --enable-filter --enable-ftp --enable-json --enable-pdo --enable-mbregex --enable-mbstring --disable-opcache --enable-phar --enable-posix --with-mysqli=mysqlnd --with-zlib-dir=/usr --with-openssl --with-libedit=/usr --enable-session --enable-simplexml --enable-parallel --with-xmlrpc --enable-soap --enable-sockets --enable-tokenizer --enable-xml --enable-xmlreader --enable-xmlwriter --with-mhash=yes --enable-sysvmsg --enable-sysvsem --enable-sysvshm --disable-cli --disable-cgi --enable-pcntl --enable-zts --enable-maintainer-zts
+
+    make
+}
+
+package() {
+    cd "${srcdir}/${_pkgbase}-${pkgver}"
+
+    make INSTALL_ROOT="${pkgdir}" install
+
+    cp "${pkgdir}/usr/share/homegear/php/lib/libphp.a" "${pkgdir}/usr/share/homegear/php/lib/libphp8.a"
+    mkdir -p "${pkgdir}/usr/lib"
+    cp "${pkgdir}/usr/share/homegear/php/lib/libphp.a" "${pkgdir}/usr/lib/libphp8-homegear.a"
+}

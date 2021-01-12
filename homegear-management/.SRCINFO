@@ -1,5 +1,5 @@
-pkgbase = homegear-nodes-core
-	pkgdesc = Homegear core nodes for Node-BLUE
+pkgbase = homegear-management
+	pkgdesc = Homegear Management
 	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://homegear.eu
@@ -11,8 +11,8 @@ pkgbase = homegear-nodes-core
 	license = GPL3
 	depends = libhomegear-base
 	depends = libhomegear-node
-	source = git://github.com/Homegear/homegear-nodes-core.git
+	source = git://github.com/Homegear/homegear-management.git
 	sha256sums = SKIP
 
-pkgname = homegear-nodes-core
+pkgname = homegear-management
 

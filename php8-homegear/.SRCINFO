@@ -1,0 +1,27 @@
+pkgbase = php-homegear
+	pkgdesc = Patched version of PHP for Homegear
+	pkgver = 8.0.1
+	pkgrel = 1
+	url = http://www.php.net
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = PHP
+	depends = gmp
+	depends = enchant
+	depends = libedit
+	depends = libmcrypt
+	depends = libzip
+	depends = libxml2
+	depends = openssl
+	depends = oniguruma
+	options = !emptydirs
+	source = http://www.php.net/distributions/php-8.0.1.tar.xz
+	source = git://github.com/krakjoe/parallel.git#branch=develop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = php-homegear
+

@@ -1,13 +1,13 @@
 # Maintainer: Niklas <dev@n1klas.net>
 
-pkgname='libhomegear-ipc'
-pkgdesc='Library to create IPC clients for Homegear'
+pkgname='homegear-management'
+pkgdesc='Homegear Management'
 pkgver=0.8.0
 pkgrel=1
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
-license=('LGPL3')
+license=('GPL3')
 url="https://homegear.eu"
-depends=('gcc-libs')
+depends=('libhomegear-base' 'libhomegear-node')
 source=("git://github.com/Homegear/${pkgname}.git")
 sha256sums=('SKIP')
 
@@ -16,6 +16,8 @@ prepare() {
 
     # Use the our version number instead of the script which would have fetched it from Github
     sed -i -e "s#m4_esyscmd_s(\[./getVersion.sh\])#${pkgver}#" configure.ac
+
+    sed -i -e "/#include <sys\/sysctl.h>/d" src/main.cpp
 }
 
 build() {
@@ -23,6 +25,7 @@ build() {
 
     ./bootstrap
     ./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --libdir=/usr/lib
+    
     make
 }
 
