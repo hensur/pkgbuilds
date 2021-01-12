@@ -4,7 +4,8 @@ BUILD_ORDER=(
     'libhomegear-ipc'
     'libhomegear-base'
     'homegear-nodes-core'
-    'php-homegear'
+    'homegear-management'
     'php7-homegear'
     'homegear'
+    # 'homegear-max'
 )
